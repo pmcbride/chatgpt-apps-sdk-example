@@ -186,6 +186,8 @@ Will create a new post via the REST API once implemented.
 
 ## Resources
 
+- [Usage Examples](./USAGE.md) - Detailed examples of how to use the MCP server with ChatGPT
+- [Deployment Guide](./DEPLOYMENT.md) - Step-by-step instructions for deploying to production
 - [ChatGPT Apps SDK Documentation](https://developers.openai.com/apps-sdk)
 - [Apps SDK UI Library](https://openai.github.io/apps-sdk-ui)
 - [MCP Protocol Specification](https://modelcontextprotocol.io)
