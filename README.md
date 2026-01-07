@@ -2,6 +2,8 @@
 
 Example ChatGPT App + MCP Server that integrates with pmmcbride.com through the Model Context Protocol (MCP).
 
+> 🚀 **[Quick Start Guide →](./QUICKSTART.md)** - Get running in 5 minutes!
+
 ## Overview
 
 This project demonstrates how to build a ChatGPT app using the Apps SDK that connects to a personal website. The MCP server exposes tools for:
