@@ -64,7 +64,13 @@ const TOOLS: Tool[] = [
 // Helper function to scrape posts from the website
 async function scrapePosts(): Promise<any[]> {
   try {
-    const response = await fetch(WEBSITE_URL);
+    const response = await fetch(WEBSITE_URL, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (compatible; ChatGPT-MCP-Bot/1.0)',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+      },
+    });
+    
     if (!response.ok) {
       throw new Error(`Failed to fetch website: ${response.status} ${response.statusText}`);
     }
@@ -114,7 +120,13 @@ async function scrapePosts(): Promise<any[]> {
       link: WEBSITE_URL 
     }];
   } catch (error: any) {
-    throw new Error(`Failed to scrape posts: ${error.message}`);
+    // Return a more user-friendly error response
+    console.error('Scraping error:', error.message);
+    return [{
+      title: 'Unable to scrape website',
+      content: `Error: ${error.message}. This could be due to network restrictions or the website being unavailable.`,
+      link: WEBSITE_URL,
+    }];
   }
 }
 

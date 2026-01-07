@@ -64,6 +64,33 @@ npm run serve
 
 This starts an HTTP server on port 4444 with CORS enabled.
 
+## Testing
+
+### Testing the MCP Server
+
+A test script is provided to verify the MCP server functionality:
+
+```bash
+node test-server.mjs
+```
+
+This will:
+1. Start the MCP server
+2. List all available tools
+3. Test the `scrape_posts` tool
+4. Test the `get_posts` tool (placeholder)
+5. Test the `create_post` tool (placeholder)
+
+Note: The `scrape_posts` tool may not work in restricted network environments but will function correctly when deployed or in ChatGPT.
+
+### Manual Testing with MCP Inspector
+
+You can also use the [MCP Inspector](https://github.com/modelcontextprotocol/inspector) to manually test and debug your MCP server:
+
+```bash
+npx @modelcontextprotocol/inspector node dist/server.js
+```
+
 ## Connecting to ChatGPT
 
 ### Option 1: Using ngrok (for local testing)
@@ -81,6 +108,7 @@ ngrok http 3000
 3. Copy the ngrok URL (e.g., `https://abc123.ngrok-free.app`)
 
 4. In ChatGPT:
+   - Enable [developer mode](https://platform.openai.com/docs/guides/developer-mode)
    - Go to Settings → Connectors
    - Add a new connector
    - Enter the MCP endpoint: `https://abc123.ngrok-free.app/mcp`
@@ -90,6 +118,23 @@ ngrok http 3000
 Deploy the MCP server to your hosting platform (e.g., Railway, Render, Fly.io) and use the production URL.
 
 The MCP endpoint should be configured at: `https://mcp.pmmcbride.com/mcp`
+
+### Option 3: Local MCP Client (Claude Desktop, etc.)
+
+For local MCP clients like Claude Desktop, you can configure the server in your MCP settings file. Example configuration:
+
+```json
+{
+  "mcpServers": {
+    "personal-website": {
+      "command": "node",
+      "args": ["/path/to/chatgpt-apps-sdk-example/dist/server.js"]
+    }
+  }
+}
+```
+
+Or use the provided `mcp-config.json` file as a template.
 
 ## Project Structure
 

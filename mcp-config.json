@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "personal-website": {
+      "command": "node",
+      "args": ["dist/server.js"],
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  }
+}
