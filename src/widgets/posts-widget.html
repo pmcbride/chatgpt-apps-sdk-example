@@ -174,7 +174,8 @@
           container.innerHTML = '<div class="loading">This widget requires ChatGPT context to function.</div>';
         }
       } catch (error) {
-        container.innerHTML = `<div class="error">Error loading posts: ${error.message}</div>`;
+        const errorMsg = error instanceof Error ? error.message : 'Unknown error';
+        container.innerHTML = `<div class="error">Error loading posts: ${errorMsg}. Please try refreshing or contact support.</div>`;
       }
     };
 

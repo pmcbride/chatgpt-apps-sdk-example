@@ -1,5 +1,3 @@
-import express, { Request, Response } from 'express';
-import cors from 'cors';
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import {
@@ -119,12 +117,13 @@ async function scrapePosts(): Promise<any[]> {
       content: 'No blog posts found with standard selectors. The website may use custom structure.',
       link: WEBSITE_URL 
     }];
-  } catch (error: any) {
+  } catch (error: unknown) {
     // Return a more user-friendly error response
-    console.error('Scraping error:', error.message);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+    console.error('Scraping error:', errorMessage);
     return [{
       title: 'Unable to scrape website',
-      content: `Error: ${error.message}. This could be due to network restrictions or the website being unavailable.`,
+      content: `Error: ${errorMessage}. This could be due to network restrictions or the website being unavailable.`,
       link: WEBSITE_URL,
     }];
   }
@@ -273,12 +272,13 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       default:
         throw new Error(`Unknown tool: ${name}`);
     }
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
     return {
       content: [
         {
           type: 'text',
-          text: `Error: ${error.message}`,
+          text: `Error: ${errorMessage}`,
         },
       ],
       isError: true,

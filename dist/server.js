@@ -106,10 +106,11 @@ async function scrapePosts() {
     }
     catch (error) {
         // Return a more user-friendly error response
-        console.error('Scraping error:', error.message);
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+        console.error('Scraping error:', errorMessage);
         return [{
                 title: 'Unable to scrape website',
-                content: `Error: ${error.message}. This could be due to network restrictions or the website being unavailable.`,
+                content: `Error: ${errorMessage}. This could be due to network restrictions or the website being unavailable.`,
                 link: WEBSITE_URL,
             }];
     }
@@ -243,11 +244,12 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         }
     }
     catch (error) {
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
         return {
             content: [
                 {
                     type: 'text',
-                    text: `Error: ${error.message}`,
+                    text: `Error: ${errorMessage}`,
                 },
             ],
             isError: true,

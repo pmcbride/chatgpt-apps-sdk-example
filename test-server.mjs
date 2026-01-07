@@ -11,6 +11,8 @@ import { dirname, resolve } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+const REQUEST_TIMEOUT_MS = 10000; // 10 seconds
+
 const serverPath = resolve(__dirname, 'dist/server.js');
 
 // Start the server
@@ -31,8 +33,8 @@ function sendRequest(method, params = {}) {
     let response = '';
     
     const timeout = setTimeout(() => {
-      reject(new Error('Request timeout'));
-    }, 10000);
+      reject(new Error(`Request timeout after ${REQUEST_TIMEOUT_MS}ms`));
+    }, REQUEST_TIMEOUT_MS);
     
     const dataHandler = (data) => {
       response += data.toString();
