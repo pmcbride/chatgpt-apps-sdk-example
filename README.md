@@ -3,6 +3,8 @@
 Example ChatGPT App + MCP Server that integrates with pmmcbride.com through the Model Context Protocol (MCP).
 
 > 🚀 **[Quick Start Guide →](./QUICKSTART.md)** - Get running in 5 minutes!
+> 
+> 📝 **[Original Prompt →](./ORIGINAL_PROMPT.md)** - View the original problem statement
 
 ## Overview
 
