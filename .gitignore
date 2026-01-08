@@ -8,3 +8,8 @@ node_modules/
 # Temporary files
 .tmp.*/
 .tmp.*
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
