@@ -33,8 +33,8 @@ resource "aws_apprunner_service" "mcp_server" {
         # The command in Dockerfile or here should ensure "mode=http" is passed
         # but we can also handle it via ENV if the code supports it.
         # For now, we rely on the Docker CMD or ENTRYPOINT.
+        start_command = "node dist/server.js mode=http"
       }
-      start_command = "node dist/server.js mode=http"
     }
   }
 
