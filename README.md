@@ -3,7 +3,7 @@
 Example ChatGPT App + MCP Server that integrates with pmmcbride.com through the Model Context Protocol (MCP).
 
 > 🚀 **[Quick Start Guide →](./QUICKSTART.md)** - Get running in 5 minutes!
-> 
+>
 > 📝 **[Original Prompt →](./ORIGINAL_PROMPT.md)** - View the original problem statement
 
 ## Overview
@@ -16,24 +16,27 @@ This project demonstrates how to build a ChatGPT app using the Apps SDK that con
 
 ## Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm or pnpm
 - ChatGPT Plus or Team account with developer mode enabled
 
 ## Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/pmcbride/chatgpt-apps-sdk-example.git
 cd chatgpt-apps-sdk-example
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Build the project:
+
 ```bash
 npm run build
 ```
@@ -79,6 +82,7 @@ node test-server.mjs
 ```
 
 This will:
+
 1. Start the MCP server
 2. List all available tools
 3. Test the `scrape_posts` tool
@@ -89,22 +93,34 @@ Note: The `scrape_posts` tool may not work in restricted network environments bu
 
 ### Manual Testing with MCP Inspector
 
-You can also use the [MCP Inspector](https://github.com/modelcontextprotocol/inspector) to manually test and debug your MCP server:
+You can use the [MCP Inspector](https://github.com/modelcontextprotocol/inspector) to manually test and debug your MCP server.
+
+To start the inspector with the server:
 
 ```bash
-npx @modelcontextprotocol/inspector node dist/server.js
+make inspector
 ```
+
+Or manually:
+
+```bash
+npx @modelcontextprotocol/inspector@latest node dist/server.js
+```
+
+This will launch a web interface where you can list tools, call them interactively, and inspect the JSON-RPC traffic.
 
 ## Connecting to ChatGPT
 
 ### Option 1: Using ngrok (for local testing)
 
 1. Start your MCP server:
+
 ```bash
 npm start
 ```
 
 2. In another terminal, expose it via ngrok:
+
 ```bash
 ngrok http 3000
 ```
@@ -163,6 +179,7 @@ Or use the provided `mcp-config.json` file as a template.
 Scrapes blog posts from pmmcbride.com and displays them in an interactive widget.
 
 **Usage in ChatGPT:**
+
 ```
 Show me the latest posts from my website
 ```
