@@ -4,3 +4,7 @@ node_modules/
 *.log
 .vscode/
 .idea/
+
+# Temporary files
+.tmp.*/
+.tmp.*
